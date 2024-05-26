@@ -36,6 +36,16 @@ app.get('/symptoms', (req, res) => {
     });
 });
 
+// Endpoint to fetch rules
+app.get('/rules', (req, res) => {
+    connection.query('SELECT * FROM tabel_rule', (err, results) => {
+        if (err) {
+            return res.status(500).send('Error retrieving questions');
+        }
+        res.json(results);
+    });
+});
+
 // Endpoint to check answers
 app.post('/diagnose', express.json(), (req, res) => {
     const userAnswers = req.body.answers;
