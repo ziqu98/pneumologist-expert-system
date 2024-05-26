@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2024 at 10:04 AM
+-- Generation Time: May 26, 2024 at 05:08 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tabel_gejala` (
   `kode_gejala` char(20) DEFAULT NULL,
-  `nama_gejala` char(30) NOT NULL
+  `nama_gejala` char(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -46,10 +46,10 @@ INSERT INTO `tabel_gejala` (`kode_gejala`, `nama_gejala`) VALUES
 ('G0007', 'Kelelahan'),
 ('G0008', 'Berat badan turun'),
 ('G0009', 'Pernapasan bunyi'),
-('G0010', 'Pembengkakan kaki/perge'),
+('G0010', 'Pembengkakan kaki/pergelangan'),
 ('G0011', 'Dahak berlebihan'),
 ('G0012', 'Kesulitan tidur'),
-('G0013', 'Penurunan kemampuan fis');
+('G0013', 'Penurunan kemampuan fisik');
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,7 @@ INSERT INTO `tabel_penyakit` (`kode_penyakit`, `nama_penyakit`) VALUES
 ('P00004', 'Kanker Paru-Paru'),
 ('P00005', 'Bronkitis'),
 ('P00006', 'PPOK'),
-('P00007', 'Emboli Pau-Paru'),
+('P00007', 'Emboli Paru-Paru'),
 ('P00008', 'Tuberkulosis Ekstra Paru'),
 ('P00009', 'Asbestosis');
 
@@ -85,27 +85,28 @@ INSERT INTO `tabel_penyakit` (`kode_penyakit`, `nama_penyakit`) VALUES
 
 CREATE TABLE `tabel_pertanyaan` (
   `kode_pertanyaan` varchar(6) NOT NULL,
-  `pertanyaan` varchar(50) NOT NULL
+  `pertanyaan` varchar(50) NOT NULL,
+  `kode_gejala` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tabel_pertanyaan`
 --
 
-INSERT INTO `tabel_pertanyaan` (`kode_pertanyaan`, `pertanyaan`) VALUES
-('T00001', 'Apakah anda menderita batuk-batuk?'),
-('T00002', 'Apakah nafas anda terasa sesak?'),
-('T00003', 'Apakah dada anda terasa nyeri?'),
-('T00004', 'Apakah anda merasa demam?'),
-('T00005', 'Apakah anda merasa menggigil?'),
-('T00006', 'Apakah anda batuk dengan dahak berdarah?'),
-('T00007', 'Apakah anda merasa kelelahan?'),
-('T00008', 'Apakah berat badan anda mengalami penurunan?'),
-('T00009', 'Apakah pernapasan anda berbunyi?'),
-('T00010', 'Apakah kaki/pergelangan anda bengkak?'),
-('T00011', 'Apakah anda mengeluarkan dahak yang berlebihan?'),
-('T00012', 'Apakah anda merasa kesulitan tidur?'),
-('T00013', 'Apakah anda mengalami penurunan kemampuan fisik?');
+INSERT INTO `tabel_pertanyaan` (`kode_pertanyaan`, `pertanyaan`, `kode_gejala`) VALUES
+('T00001', 'Apakah anda menderita batuk-batuk?', 'G0001'),
+('T00002', 'Apakah nafas anda terasa sesak?', 'G0002'),
+('T00003', 'Apakah dada anda terasa nyeri?', 'G0003'),
+('T00004', 'Apakah anda merasa demam?', 'G0004'),
+('T00005', 'Apakah anda merasa menggigil?', 'G0005'),
+('T00006', 'Apakah anda batuk dengan dahak berdarah?', 'G0006'),
+('T00007', 'Apakah anda merasa kelelahan?', 'G0007'),
+('T00008', 'Apakah berat badan anda mengalami penurunan?', 'G0008'),
+('T00009', 'Apakah pernapasan anda berbunyi?', 'G0009'),
+('T00010', 'Apakah kaki/pergelangan anda bengkak?', 'G0010'),
+('T00011', 'Apakah anda mengeluarkan dahak yang berlebihan?', 'G0011'),
+('T00012', 'Apakah anda merasa kesulitan tidur?', 'G0012'),
+('T00013', 'Apakah anda mengalami penurunan kemampuan fisik?', 'G0013');
 
 -- --------------------------------------------------------
 
