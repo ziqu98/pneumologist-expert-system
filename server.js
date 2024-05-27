@@ -50,6 +50,7 @@ app.get('/rules', (req, res) => {
 app.post('/diagnose', express.json(), (req, res) => {
     const userAnswers = req.body.answers;
     // Debug
+    console.log('Kode Pertanyaan:');
     console.log(userAnswers);
     
     connection.query('SELECT r.kode_pertanyaan, p.nama_penyakit FROM tabel_rule r JOIN tabel_penyakit p ON r.kode_penyakit = p.kode_penyakit', (err, rules) => {
@@ -64,6 +65,7 @@ app.post('/diagnose', express.json(), (req, res) => {
 
         res.json(possibleDiseases.map(d => d.nama_penyakit));
         // Debug
+        console.log('Daftar Kemungkinan Penyakit:');
         console.log(possibleDiseases);
     });
 });
@@ -72,6 +74,7 @@ app.post('/diagnose', express.json(), (req, res) => {
 app.post('/list-symptoms', express.json(), (req, res) => {
     const userSymptoms = req.body.answers;
     // Debug
+    console.log('Kode Gejala:');
     console.log(userSymptoms);
     
     connection.query('SELECT t.kode_gejala, g.nama_gejala FROM tabel_pertanyaan t JOIN tabel_gejala g ON t.kode_gejala = g.kode_gejala', (err, symptoms) => {
@@ -83,6 +86,7 @@ app.post('/list-symptoms', express.json(), (req, res) => {
 
         res.json(symptomsList.map(s => s.nama_gejala));
         // Debug
+        console.log('Daftar Gejala:');
         console.log(symptomsList);
     });
 });
